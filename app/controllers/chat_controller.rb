@@ -20,6 +20,8 @@ class ChatController < WebsocketRails::BaseController
       msg_body:   ERB::Util.html_escape(msg)
     }
     Post.new({ content: msg }).save # prototype
+    p "ev: #{ev}"
+    p "msg: #{msg}"
   end
 
   def client_connected

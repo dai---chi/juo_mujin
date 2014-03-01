@@ -55,7 +55,8 @@ class Chat.Controller
     event.preventDefault()
     message = $('#message_post').val()
     type = 'post'
-    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, type: type}
+    topic_id = parseInt($('#topic_id').val())
+    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, type: type, topic_id: topic_id}
     $('#message_post').val('')
 
   updateUserList: (userList) =>

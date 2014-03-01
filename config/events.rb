@@ -7,7 +7,7 @@ WebsocketRails.setup do |config|
 
   # Uncomment to change the default log file path.
   # config.log_path = "#{Rails.root}/log/websocket_rails.log"
-  
+
   # Set to true if you wish to log the internal websocket_rails events
   # such as the keepalive `websocket_rails.ping` event.
   config.log_internal_events = true
@@ -32,6 +32,7 @@ end
 WebsocketRails::EventMap.describe do
   subscribe :client_connected, to: ChatController, with_method: :client_connected
   subscribe :new_message, to: ChatController, with_method: :new_message
+  subscribe :new_topic, to: ChatController, with_method: :new_topic
   subscribe :new_user, to: ChatController, with_method: :new_user
   subscribe :change_username, to: ChatController, with_method: :change_username
   subscribe :client_disconnected, to: ChatController, with_method: :delete_user

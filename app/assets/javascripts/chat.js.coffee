@@ -109,7 +109,7 @@ class Topic.Controller
     @bindEvents()
 
   bindEvents: =>
-    @dispatcher.bind 'new_message', @newMessage
+    @dispatcher.bind 'new_topic', @newMessage
     @dispatcher.bind 'user_list', @updateUserList
     $('input#user_name').on 'keyup', @updateUserInfo
     $('#send_topic').on 'click', @sendMessage
@@ -123,7 +123,7 @@ class Topic.Controller
   sendMessage: (event) =>
     event.preventDefault()
     message = $('#message_topic').val()
-    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message}
+    @dispatcher.trigger 'new_topic', {user_name: @user.user_name, msg_body: message}
     $('#message_topic').val('')
 
   updateUserList: (userList) =>

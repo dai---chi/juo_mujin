@@ -31,6 +31,9 @@ class ChatController < WebsocketRails::BaseController
   def new_message
     user_msg :new_message, message[:msg_body].dup
   end
+  def new_topic
+    user_msg :new_topic, message[:msg_body].dup
+  end
 
   def new_user
     connection_store[:user] = { user_name: sanitize(message[:user_name]) }

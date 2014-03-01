@@ -13,13 +13,18 @@
 <div class="postWrapper">
   <div class="form-inline well">
     <fieldset>
-      <input type="text" class="input-medium" id="user_name">
-      <input type="text" class="input-xlarge" id="message_post">
-      <input type="text" class="input-xlarge" id="topic_id">
+      <input type="text" class="input-medium" id="user_name" placeholder='user_name'>
+      <input type="text" class="input-xlarge" id="message_post" placeholder='本文'>
+      <!-- <input type="text" class="input-xlarge" id="topic_id"> -->
+      <select id='topic_id' name="topic">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
       <button id="send_post" class="btn btn-primary">Send</button>
     </fieldset>
   </div>
   <div id="posts" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
   </div>
 </div>
-

@@ -55,7 +55,8 @@ class Chat.Controller
     event.preventDefault()
     message = $('#message_post').val()
     type = 'post'
-    topic_id = parseInt($('#topic_id').val())
+    # topic_id = parseInt($('#topic_id').val())
+    topic_id = parseInt($('#topic_id option:selected').val())
     @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, type: type, topic_id: topic_id}
     $('#message_post').val('')
 
@@ -70,6 +71,8 @@ class Chat.Controller
   appendMessage: (message) ->
     messageTemplate = @template(message)
     $('#posts').append messageTemplate
+    console.log("message.topic_id: "+message.topic_id)
+    $('#topic_'+message.topic_id).append messageTemplate
     messageTemplate.slideDown 140
 
   shiftMessageQueue: =>

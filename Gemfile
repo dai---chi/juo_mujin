@@ -11,7 +11,6 @@ gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'sqlite3', '1.3.7'
-gem 'jazz_hands'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +25,7 @@ group :assets do
 end
 
 group :development do
+  gem 'jazz_hands'
   gem 'tilt'
   gem 'coffee-rails-source-maps'
 end

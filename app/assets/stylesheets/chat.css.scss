@@ -33,9 +33,43 @@
     background: #ddd;
     border-radius: 10px;
     padding:0 5px 5px;
+    margin:10px 0;
+  }
+  .new_message{
+    animation: skeeew 1s;
+    animation-iteration-count: 1;
+    // -moz-animation-timing-function: cubic-bezier(0, 1.1, 0, 1.1);
+    -webkit-animation-name: skeeew; /* Safari & Chrome */
+    -webkit-animation-duration: 1s; /* Safari & Chrome */
+    -webkit-animation-iteration-count: 1;
+    // -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
 }
 
 #footer {
   background: #ccc;
 }
+
+@keyframes inout {
+  0%   { transform: scale(0, 0); }
+  25%   { transform: scale(2, 2); }
+  50%   { transform: scale(0, 0); }
+  100%  { transform: scale(1, 1); }
+}
+@-webkit-keyframes inout { /* Safari & Chrome */
+  0%   { -webkit-transform: scale(0, 0); }
+  25%  { -webkit-transform: scale(1.2, 1.2); }
+  50%  { -webkit-transform: scale(0, 0); }
+  100% { -webkit-transform: scale(1, 1); }
+}
+@keyframes skeeew {
+  0%   { transform: skewX(0deg); }
+  100%  { transform: skewX(180deg); }
+}
+@-webkit-keyframes skeeew { /* Safari & Chrome */
+  0%   { -webkit-transform: skewX(0deg); }
+  100%  { -webkit-transform: skewX(180deg); }
+}
+
+
+

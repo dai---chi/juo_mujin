@@ -4,7 +4,7 @@ module ApplicationHelper
     arr = []
     for i in Topic.all
       arr << { topic: i,
-               posts: i.posts}
+               posts: i.posts.order('created_at DESC').limit(5)}
     end
     # binding.pry
     arr

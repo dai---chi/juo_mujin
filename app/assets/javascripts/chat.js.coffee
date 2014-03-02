@@ -16,7 +16,7 @@ class Chat.Controller
   template: (message) ->
     html =
       """
-      <div class="message" >
+      <div class="message new_message" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
         </label>&nbsp;
@@ -54,11 +54,10 @@ class Chat.Controller
   sendMessage: (event) =>
     event.preventDefault()
     message = $('#message_post').val()
-    return if message == ''
-    type = 'post'
+    return if !message
     # topic_id = parseInt($('#topic_id').val())
     topic_id = $('#topic_selection option:selected').val()
-    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, type: type, topic_id: topic_id}
+    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, topic_id: topic_id}
     $('#message_post').val('')
 
   updateUserList: (userList) =>
@@ -73,7 +72,9 @@ class Chat.Controller
     messageTemplate = @template(message)
     $('#posts').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
-    $('#'+message.topic_id).append messageTemplate
+    # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
+    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).fadeOut(100).fadeIn(200)
+    # $('#'+message.topic_id).children('.messages').prepend.
     messageTemplate.slideDown 140
 
   shiftMessageQueue: =>
@@ -92,7 +93,7 @@ class Topic.Controller
   template: (message) ->
     html =
       """
-      <div class="message" >
+      <div class="message new_message" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
         </label>&nbsp Topic;

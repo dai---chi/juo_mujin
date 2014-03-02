@@ -34,8 +34,8 @@
       <% topic_list.each do |item| %>
         <div id="<%= item[:topic].title %>" class='topic_column'>
           <h3><%= item[:topic].title %></h3>
-          <div class="messages" >
-            <% item[:posts].each do |c|%><br>
+          <div class="messages">
+            <% item[:posts].each do |c|%>
             <div class="message">
               <label class="label label-info">
                 <%= "#{c.created_at}" %>

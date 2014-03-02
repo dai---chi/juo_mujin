@@ -11,6 +11,8 @@ gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'sqlite3', '1.3.7'
+gem 'jquery-rails'
+gem 'jquery-easing-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,4 +35,3 @@ group :development do
   gem 'binding_of_caller'
 end
 
-gem 'jquery-rails'

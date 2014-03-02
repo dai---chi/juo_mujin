@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.easing
 //= require_tree .
 //= require websocket_rails/main
 //= require chat

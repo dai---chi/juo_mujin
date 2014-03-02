@@ -22,6 +22,8 @@
 }
 
 #topics {
+  position:relative;
+  display: inline-table; //幅をコンテンツ一杯にすることでアニメーションの時に2行にならないようにする
   .topic_column {
     width: 180px;
     white-space: normal;

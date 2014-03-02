@@ -70,15 +70,30 @@ class Chat.Controller
 
   appendMessage: (message) ->
     messageTemplate = @template(message)
-    # $('#topics').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
-    # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
-    $("#"+message.topic_id).prependTo($('#topics'))
-    .removeClass('updateTopic').addClass('updateTopic')
-    $("#"+message.topic_id).children('.messages').children('.message').removeClass('new_message')
-    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
-    # $('#'+message.topic_id).children('.messages').prepend.
-    messageTemplate.slideDown 140
+    column = $('#'+message.topic_id)
+    if $('#topics').children()[0].id == column.attr('id')
+      column.children('.messages').children('.message').removeClass('new_message')
+      column.children('.messages').prepend(messageTemplate)
+    else # cf. http://jsfiddle.net/ebiewener/Y5Mdt/1/
+      h = column.outerWidth()
+      pos = column.position()
+      column.css({
+        position:'absolute',
+        left: pos.left,
+        top: pos.top })
+      column.animate({left:0}, 800, 'easeInOutExpo')
+      column.next().animate({marginLeft: -1 }, 800, 'easeInOutExpo');
+      column.parent().animate({
+        paddingLeft: h - 1
+      }, 800, 'easeInOutExpo', =>
+        column.parent().css('padding-left', '')
+        column.parent().children(':first').before(column);
+        column.css('position', 'relative');
+        column.siblings().css({paddingLeft: ''});
+        column.children('.messages').prepend(messageTemplate)
+      )
+
   shiftMessageQueue: =>
     @messageQueue.shift()
     $('#posts div.messages:first').slideDown 100, ->

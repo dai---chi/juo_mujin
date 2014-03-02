@@ -99,6 +99,8 @@ GEM
       pry-remote (>= 0.1.7)
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
+    jquery-easing-rails (0.0.1)
+      railties (>= 3.1.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -210,6 +212,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   coffee-rails-source-maps
   jazz_hands
+  jquery-easing-rails
   jquery-rails
   less-rails
   railroady

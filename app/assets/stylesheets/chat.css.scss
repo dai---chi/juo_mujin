@@ -1,6 +1,12 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container {
+  width: auto;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
 .label-info {
 	display: inline !important;
 }
@@ -18,7 +24,9 @@
 .topic_table {
   .topic_column {
     width: 180px;
-    float: left;
+    white-space: normal;
+    // float: left;
+    display: inline-table;
   }
 }
 

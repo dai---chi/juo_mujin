@@ -1,0 +1,45 @@
+<h1>StaticPages#home</h1>
+<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="topicWrapper">
+  <div class="form-inline well">
+    <fieldset>
+      <input type="text" class="input-medium" id="user_name">
+      <input type="text" class="input-xlarge" id="message_topic">
+      <button id="send_topic" class="btn btn-primary">Send</button>
+    </fieldset>
+  </div>
+  <div id="topic" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+  </div>
+</div>
+
+<div class="postWrapper">
+  <div class="form-inline well">
+    <fieldset>
+      <input type="text" class="input-medium" id="user_name" placeholder='user_name'>
+      <input type="text" class="input-xlarge" id="message_post" placeholder='本文'>
+      <!-- <input type="text" class="input-xlarge" id="topic_id"> -->
+      <!-- <select id='topic_id' name="topic">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select> -->
+      <%= select :topic, :selection , topic_list %>
+      <button id="send_post" class="btn btn-primary">Send</button>
+    </fieldset>
+  </div>
+  <div id="posts" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+  </div>
+  <div class="topic_table">
+      <% for i in topic_list %>
+        <div id="<%= i %>" class='topic_column'><%= i %></div>
+      <% end %>
+      <div id='topic_1' class='topic_column'>topic_id: 1</div>
+      <div id='topic_2' class='topic_column'>topic_id: 2</div>
+      <div id='topic_3' class='topic_column'>topic_id: 3</div>
+      <div id='topic_4' class='topic_column'>topic_id: 4</div>
+      <div id='topic_4' class='topic_column'>topic_id: 4</div>
+      <div id='topic_4' class='topic_column'>topic_id: 4</div>
+
+    </div>
+</div>

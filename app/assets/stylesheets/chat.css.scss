@@ -67,9 +67,11 @@
 @-webkit-keyframes growHeight {
     0% {
       max-height: 0px;
+      -webkit-transform: scale(0);
     }
     100% {
       max-height: 50px;
+      -webkit-transform: scale(1);
     }
   }
 @-webkit-keyframes growWidth {

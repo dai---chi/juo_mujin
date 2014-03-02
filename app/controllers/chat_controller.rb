@@ -36,7 +36,7 @@ class ChatController < WebsocketRails::BaseController
     }) # prototype
   end
   def new_topic
-    user_msg :new_topic, message[:msg_body].dup, {}
+    user_msg :new_topic, message[:msg_body].dup, {topic_id: message[:msg_body]}
     Topic.create({
       title: message[:msg_body]
     })

@@ -70,7 +70,7 @@ class Chat.Controller
 
   appendMessage: (message) ->
     messageTemplate = @template(message)
-    $('#posts').append messageTemplate
+    # $('#topics').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
     $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
@@ -93,12 +93,11 @@ class Topic.Controller
   template: (message) ->
     html =
       """
-      <div class="message new_message" >
-        <label class="label label-info">
-          [#{message.received}] #{message.user_name}
-        </label>&nbsp Topic;
-        #{message.msg_body}
-      </div>
+      <div id="#{message.topic_id}" class="topic_column">
+          <h3>#{message.topic_id}</h3>
+          <div class="messages">
+          </div>
+        </div>
       """
     $(html)
 
@@ -129,6 +128,7 @@ class Topic.Controller
   sendMessage: (event) =>
     event.preventDefault()
     message = $('#message_topic').val()
+    return if !message
     @dispatcher.trigger 'new_topic', {user_name: @user.user_name, msg_body: message}
     $('#message_topic').val('')
 
@@ -142,7 +142,10 @@ class Topic.Controller
 
   appendMessage: (message) ->
     messageTemplate = @template(message)
-    $('#topic').append messageTemplate
+    $('#topics').prepend messageTemplate
+    $('#topic_selection').prepend """<option value="#{message.topic_id}">#{message.topic_id}</option>"""
+    $('#topic_selection').val("#{message.topic_id}")
+    $('#message_post').focus()
     messageTemplate.slideDown 140
 
   shiftMessageQueue: =>

@@ -25,8 +25,12 @@
   .topic_column {
     width: 180px;
     white-space: normal;
-    // float: left;
     display: inline-table;
+    border: 1px #ccc dashed;
+    border-radius: 20px;
+    .topic_title {
+      word-break: break-all;
+    }
   }
   .message{
     // border: 1px #333 solid;

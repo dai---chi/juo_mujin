@@ -73,12 +73,12 @@ class Chat.Controller
     # $('#topics').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
-    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
     $("#"+message.topic_id).prependTo($('#topics'))
     .removeClass('updateTopic').addClass('updateTopic')
+    $("#"+message.topic_id).children('.messages').children('.message').removeClass('new_message')
+    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
     # $('#'+message.topic_id).children('.messages').prepend.
     messageTemplate.slideDown 140
-
   shiftMessageQueue: =>
     @messageQueue.shift()
     $('#posts div.messages:first').slideDown 100, ->
@@ -95,16 +95,16 @@ class Topic.Controller
   template: (message) ->
     html =
       """
-      <div id="#{message.topic_id}" class="topic_column new_topic">
-          <h3>#{message.topic_id}</h3>
-          <div class="messages">
+      <div id="#{message.topic_id}" class='topic_column new_topic'>
+          <h3 class='topic_title'>#{message.topic_id}</h3>
+          <div class='messages'>
           </div>
         </div>
       """
     $(html)
 
   userListTemplate: (userList) ->
-    userHtml = ""
+    userHtml = ''
     for user in userList
       userHtml = userHtml + "<li>#{user.user_name}</li>"
     $(userHtml)

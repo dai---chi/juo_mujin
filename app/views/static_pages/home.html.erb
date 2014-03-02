@@ -33,7 +33,7 @@
   <div id="topics">
       <% topic_list.each do |item| %>
         <div id="<%= item[:topic].title %>" class='topic_column'>
-          <h3><%= item[:topic].title %></h3>
+          <h3 class='topic_title'><%= item[:topic].title %></h3>
           <div class="messages">
             <% item[:posts].each do |c|%>
             <div class="message">

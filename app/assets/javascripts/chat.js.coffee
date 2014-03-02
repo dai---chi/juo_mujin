@@ -73,7 +73,7 @@ class Chat.Controller
     $('#posts').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
-    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).fadeOut(100).fadeIn(200)
+    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
     # $('#'+message.topic_id).children('.messages').prepend.
     messageTemplate.slideDown 140
 

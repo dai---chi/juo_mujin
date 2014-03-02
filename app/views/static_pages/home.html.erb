@@ -24,22 +24,27 @@
         <option value="3">3</option>
         <option value="4">4</option>
       </select> -->
-      <%= select :topic, :selection , topic_list %>
+      <%= select :topic, :selection , topic_list.map{|a| a[:topic].title} %>
       <button id="send_post" class="btn btn-primary">Send</button>
     </fieldset>
   </div>
   <div id="posts" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
   </div>
   <div class="topic_table">
-      <% for i in topic_list %>
-        <div id="<%= i %>" class='topic_column'><%= i %></div>
+      <% topic_list.each do |item| %>
+        <div id="<%= item[:topic].title %>" class='topic_column'>
+          <h3><%= item[:topic].title %></h3>
+          <div class="messages" >
+            <% item[:posts].each do |c|%><br>
+            <div class="message">
+              <label class="label label-info">
+                <%= "#{c.created_at}" %>
+              </label>&nbsp;
+              <%= "#{c.content}" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-      <div id='topic_1' class='topic_column'>topic_id: 1</div>
-      <div id='topic_2' class='topic_column'>topic_id: 2</div>
-      <div id='topic_3' class='topic_column'>topic_id: 3</div>
-      <div id='topic_4' class='topic_column'>topic_id: 4</div>
-      <div id='topic_4' class='topic_column'>topic_id: 4</div>
-      <div id='topic_4' class='topic_column'>topic_id: 4</div>
-
     </div>
 </div>

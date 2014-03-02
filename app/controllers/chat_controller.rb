@@ -29,17 +29,17 @@ class ChatController < WebsocketRails::BaseController
   end
 
   def new_message
+    # binding.pry
     user_msg :new_message, message[:msg_body].dup, {topic_id: message[:topic_id]}
-    Post.new({
-      content: message[:msg_body],
-      topic_id: message[:topic_id]
-    }).save # prototype
+    Topic.find_by({title: message[:topic_id]}).posts.create({
+      content: message[:msg_body]
+    }) # prototype
   end
   def new_topic
     user_msg :new_topic, message[:msg_body].dup, {}
-    Topic.new({
+    Topic.create({
       title: message[:msg_body]
-    }).save
+    })
   end
 
   def new_user

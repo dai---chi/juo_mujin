@@ -19,7 +19,7 @@ class Chat.Controller
       <div class="message new_message" >
         <label class="label label-info">
           [#{message.received}] #{message.user_name}
-        </label>&nbsp;
+        </label>&nbsp; <br>
         #{message.msg_body}
       </div>
       """
@@ -74,6 +74,8 @@ class Chat.Controller
     console.log("message.topic_id: "+message.topic_id)
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
     $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
+    $("#"+message.topic_id).prependTo($('#topics'))
+    .removeClass('updateTopic').addClass('updateTopic')
     # $('#'+message.topic_id).children('.messages').prepend.
     messageTemplate.slideDown 140
 

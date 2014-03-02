@@ -93,7 +93,7 @@ class Topic.Controller
   template: (message) ->
     html =
       """
-      <div id="#{message.topic_id}" class="topic_column">
+      <div id="#{message.topic_id}" class="topic_column new_topic">
           <h3>#{message.topic_id}</h3>
           <div class="messages">
           </div>

@@ -52,7 +52,12 @@
     // -webkit-animation-timing-function: cubic-bezier(0, 0.5, 0, 0);
 
   }
-
+  .new_topic {
+    animation: growWidth 0.6s;
+    animation-iteration-count: 1;
+    -webkit-animation: growWidth 0.6s;
+    -webkit-animation-iteration-count: 1;
+  }
 }
 
 #footer {
@@ -66,6 +71,10 @@
     100% {
       max-height: 50px;
     }
+  }
+@-webkit-keyframes growWidth {
+    0% { -webkit-transform: rotateY(90deg);width:60px}
+    100% { -webkit-transform: rotateY(0deg);width:180px }
   }
 @keyframes growHeight {
     0% {

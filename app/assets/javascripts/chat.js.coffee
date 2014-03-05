@@ -72,10 +72,12 @@ class Chat.Controller
     messageTemplate = @template(message)
     # $('#topics').append messageTemplate
     console.log("message.topic_id: "+message.topic_id)
+    console.log(message)
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
-    $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
+    # $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
+    $(messageTemplate).prependTo($('#posts')).hide().fadeIn(600)
     # $('#'+message.topic_id).children('.messages').prepend.
-    messageTemplate.slideDown 140
+    # messageTemplate.slideDown 140
 
   shiftMessageQueue: =>
     @messageQueue.shift()

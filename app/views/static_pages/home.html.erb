@@ -31,20 +31,6 @@
   <div id="posts" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
   </div>
   <div id="topics">
-      <% topic_list.each do |item| %>
-        <div id="<%= item[:topic].title %>" class='topic_column'>
-          <h3><%= item[:topic].title %></h3>
-          <div class="messages">
-            <% item[:posts].each do |c|%>
-            <div class="message">
-              <label class="label label-info">
-                <%= "#{c.created_at}" %>
-              </label>&nbsp;
-              <%= "#{c.content}" %>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+
+  </div>
 </div>

@@ -13,9 +13,14 @@ var sub = 0;
 
 var pushedCharCode = "";
 $(window).keydown(function(e){
-    pushedCharCode =e.keyCode;
-    setTimeout("checkRecent()", 50); //要調整
-    return false;
+   if( $( '#select1' ).is( ':checked' ) ){
+        pushedCharCode =e.keyCode;
+        console.log('pushedCharCode: ' + pushedCharCode)
+        if (pushedCharCode == 9) // tabで キーイベント取得解除
+            $( '#select1' ).attr("checked", false )
+                setTimeout("checkRecent()", 50); //要調整
+        return false;
+    }
 });
 var maxVol;
 var arr = [];

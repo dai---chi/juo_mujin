@@ -16,14 +16,19 @@ $(window).keydown(function(e){
    if( $( '#select1' ).is( ':checked' ) ){
         pushedCharCode =e.keyCode;
         console.log('pushedCharCode: ' + pushedCharCode)
-        if (pushedCharCode == 9) // tabで キーイベント取得解除
+        if (pushedCharCode == 13){ // enter
+            window.chatController.sendMessage()
+            $('#volume').empty()
+            messageArr = []
+        }
+        else if (pushedCharCode == 9) // tabで キーイベント取得解除
             $( '#select1' ).attr("checked", false )
-                setTimeout("checkRecent()", 50); //要調整
+        setTimeout("checkRecent()", 50); //要調整
         return false;
     }
 });
 var maxVol;
-var arr = [];
+var messageArr = [];
 function checkRecent() {
     for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
         recentVolume.push(volumeArr.pop());
@@ -37,6 +42,7 @@ function checkRecent() {
         $(".char:last").remove();
     }else{
         $("#volume").append("<span class='char' style='font-size:"+maxVol+"px;'>"+String.fromCharCode(pushedCharCode)+"</span>");
+        messageArr.push({ keyCode: pushedCharCode, vol: maxVol})
     }
     recentVolume = [];
 }

@@ -52,8 +52,9 @@ class Chat.Controller
     @appendMessage message
 
   sendMessage: (event) =>
-    event.preventDefault()
-    message = $('#message_post').val()
+    # event.preventDefault()
+    # message = $('#message_post').val()
+    message = messageArr
     return if !message
     # topic_id = parseInt($('#topic_id').val())
     topic_id = $('#topic_selection option:selected').val()

@@ -17,13 +17,6 @@
     <fieldset>
       <input type="text" class="input-medium" id="user_name" placeholder='user_name'>
       <input type="text" class="input-xlarge" id="message_post" placeholder='本文'>
-      <!-- <input type="text" class="input-xlarge" id="topic_id"> -->
-      <!-- <select id='topic_id' name="topic">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select> -->
       <%= select :topic, :selection , topic_list.map{|a| a[:topic].title} %>
       <button id="send_post" class="btn btn-primary">Send</button>
     </fieldset>

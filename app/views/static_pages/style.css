@@ -1,0 +1,56 @@
+
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans:100);
+@import url(http://fonts.googleapis.com/css?family=Prata);
+/*
+@import url(http://fonts.googleapis.com/css?family=Quicksand:100);
+*/
+body,html {
+ background-color: white;
+ font: 16px sans-serif;
+ width:100%;
+ max-width:1440px;
+  background: url(http://s.cdpn.io/79/glow.png) no-repeat fixed center top,url("http://s.cdpn.io/79/light-noise.gif") repeat fixed 0 0;
+}
+
+#volume{
+  word-break:break-all;
+  /*font-family: "Josefin Sans", sans-serif;*/
+  /*font-family: "Quicksand", sans-serif;*/
+  font-family: "Prata", sans-serif;
+  /*font-weight:100;*/
+  /*color: black;*/
+
+/*   text-shadow:
+   5px 6px 30px rgba(0,0,0,1);
+*/   /*
+   0px 0px 0px rgba(0,0,0,0.8),
+   2px 2px 6px rgba(0, 0, 0, 0.4),
+   -2px -2px 6px rgba(255, 255, 255, 0.6);
+   */
+
+
+
+ }
+#volume span{
+  color: rgba(0, 0, 0, 0.07);
+  -webkit-background-clip: text;
+  text-shadow: rgba(255,255,255,0.9) 0 5px 6px, rgba(255,255,255,0.2) 3px 3px 3px;
+  background-color: rgba(0, 0, 0, 0.61);
+
+
+/*弱い押し*/
+/*text-shadow:rgba(255,255,255,1) 0px 1px 3px, rgba(255,255,255,0.3) 0px 0px 4px;*/
+/*background-color:rgba(0, 0, 0, 0.4);*/
+
+/*強い押し*/
+text-shadow:rgba(255,255,255,1) 0px 4px 4px, rgba(255,255,255,0) 1px 3px 1px;
+background-color:rgba(0, 0, 0, 1);
+
+
+
+  /*-webkit-mask-image: url(http://f.cl.ly/items/131E0X1b1i0X1s263R00/a.png);
+}
+p{
+  font-size:14px;
+
+}

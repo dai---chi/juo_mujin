@@ -17,21 +17,25 @@ class Chat.Controller
   template: (message) ->
     console.log('aaa')
     console.log(message)
-    html = '<div class="message new_message">'
+    html = """<div class="message new_message">
+              <label class="label label-info">
+                [#{message.received}] #{message.user_name}
+              </label>&nbsp;
+           """
     for i in message.msg_body
       html += '<span style="font-size:'
       html += i.vol
       html += 'px;line-height:'
-      html += i.vol - 15 # 要調整
+      html += i.vol - 5 # 要調整
       html += 'px;">'
       html += String.fromCharCode(i.keyCode)
       html += '</span>'
       # """<span>#{String.fromCharCode(message.msg_body[i].keyCode)}</span>"""
       # """
       # <div class="message new_message" >
-      #   <label class="label label-info">
-      #     [#{message.received}] #{message.user_name}
-      #   </label>&nbsp;
+      # <label class="label label-info">
+      #   [#{message.received}] #{message.user_name}
+      # </label>&nbsp;
       #   #{message.msg_body}
       # </div>
       # """

@@ -30,8 +30,9 @@ function checkRecent() {
     console.log("maxVol: "+maxVol);
     maxVol = maxVol * 2 + 15;
     console.log(maxVol);
-    if (pushedCharCode == 8) {
-        $(".char:last").remove();
+    if (pushedCharCode == 8) { // delete
+        $('.char:last').remove();
+        messageArr.pop()
     }else if (pushedCharCode == 13){ // enter
         window.chatController.sendMessage()
         $('#volume').empty()

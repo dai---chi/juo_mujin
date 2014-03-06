@@ -21,6 +21,8 @@ class Chat.Controller
     for i in message.msg_body
       html += '<span style="font-size:'
       html += i.vol
+      html += 'px;line-height:'
+      html += i.vol - 15 # 要調整
       html += 'px;">'
       html += String.fromCharCode(i.keyCode)
       html += '</span>'

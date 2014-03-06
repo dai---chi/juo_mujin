@@ -12,24 +12,41 @@ var volume = document.getElementById("volume");
 var sub = 0;
 
 var pushedCharCode = "";
-$(window).keydown(function(e){
-    pushedCharCode = e.keyCode;
-    if( $( '#select1' ).is( ':checked' ) ){
-        setTimeout("checkRecent()", 50); //要調整
+// $(window).keypress(function(e){
+//     pushedCharCode = e.keyCode;
+//     console.log(e);
+//     if( $( '#select1' ).is( ':checked' ) ){
+//         setTimeout("checkRecent()", 50); //要調整
+//         return false;
+//     }
+// });
+$(window).on('keydown', function(t) {
+    if (t.keyCode == 8){
+        $('.char:last').remove();
+        messageArr.pop()
+        console.log(t);
         return false;
     }
+    console.log(t);
+}).on('keypress', function(e) {
+    pushedCharCode = e.keyCode
+    if( $( '#select1' ).is( ':checked' ) ){
+        setTimeout("checkRecent()", 50); //要調整
+    }
+    console.log(e);
 });
+
 var maxVol;
 var messageArr = [];
 function checkRecent() {
     for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
         recentVolume.push(volumeArr.pop());
     };
-    console.log(recentVolume);
+    // console.log(recentVolume);
     maxVol = Math.max.apply(null,recentVolume) - 128;
-    console.log("maxVol: "+maxVol);
+    // console.log("maxVol: "+maxVol);
     maxVol = maxVol * 2 + 15;
-    console.log(maxVol);
+    // console.log(maxVol);
     if (pushedCharCode == 8) { // delete
         $('.char:last').remove();
         messageArr.pop()
@@ -43,7 +60,7 @@ function checkRecent() {
         $("#volume").append("<span class='char' style='font-size:"+maxVol+"px; line-height: "+maxVol+"px;'>"+String.fromCharCode(pushedCharCode)+"</span>");
         messageArr.push({ keyCode: pushedCharCode, vol: maxVol})
     }
-    console.log('pushedCharCode: ' + pushedCharCode)
+    // console.log('pushedCharCode: ' + pushedCharCode)
     recentVolume = [];
 }
 

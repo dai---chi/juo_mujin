@@ -17,7 +17,7 @@ class ChatController < WebsocketRails::BaseController
     broadcast_message ev, {
       user_name:  connection_store[:user][:user_name],
       received:   Time.now.to_s(:short),
-      msg_body:   ERB::Util.html_escape(msg),
+      msg_body:   msg,
       topic_id:   info[:topic_id]
     }
     p "ev: #{ev}"
@@ -30,10 +30,10 @@ class ChatController < WebsocketRails::BaseController
 
   def new_message
     # binding.pry
-    user_msg :new_message, message[:msg_body].dup, {topic_id: message[:topic_id]}
-    Topic.find_by({title: message[:topic_id]}).posts.create({
-      content: message[:msg_body]
-    }) # prototype
+    user_msg :new_message, message[:msg_body], {topic_id: message[:topic_id]}
+    # Topic.find_by({title: message[:topic_id]}).posts.create({
+      # content: message[:msg_body]
+    # }) # prototype
   end
   def new_topic
     user_msg :new_topic, message[:msg_body].dup, {topic_id: message[:msg_body]}

@@ -13,16 +13,8 @@ var sub = 0;
 
 var pushedCharCode = "";
 $(window).keydown(function(e){
-   if( $( '#select1' ).is( ':checked' ) ){
-        pushedCharCode =e.keyCode;
-        console.log('pushedCharCode: ' + pushedCharCode)
-        if (pushedCharCode == 13){ // enter
-            window.chatController.sendMessage()
-            $('#volume').empty()
-            messageArr = []
-        }
-        else if (pushedCharCode == 9) // tabで キーイベント取得解除
-            $( '#select1' ).attr("checked", false )
+    pushedCharCode = e.keyCode;
+    if( $( '#select1' ).is( ':checked' ) ){
         setTimeout("checkRecent()", 50); //要調整
         return false;
     }
@@ -38,20 +30,26 @@ function checkRecent() {
     console.log("maxVol: "+maxVol);
     maxVol = maxVol * 2 + 15;
     console.log(maxVol);
-    if (pushedCharCode==8) {
+    if (pushedCharCode == 8) {
         $(".char:last").remove();
+    }else if (pushedCharCode == 13){ // enter
+        window.chatController.sendMessage()
+        $('#volume').empty()
+        messageArr = []
+    }else if (pushedCharCode == 9){ // tabで キーイベント取得解除
+        $( '#select1' ).attr("checked", false )
     }else{
-        $("#volume").append("<span class='char' style='font-size:"+maxVol+"px;'>"+String.fromCharCode(pushedCharCode)+"</span>");
+        $("#volume").append("<span class='char' style='font-size:"+maxVol+"px; line-height: "+maxVol+"px;'>"+String.fromCharCode(pushedCharCode)+"</span>");
         messageArr.push({ keyCode: pushedCharCode, vol: maxVol})
     }
+    console.log('pushedCharCode: ' + pushedCharCode)
     recentVolume = [];
 }
 
 setInterval(function(){
     var max = 0.0;
-    freqData = new Uint8Array(analyserNode.frequencyBinCount);
-    analyserNode.getByteFrequencyData(freqData);
-
+    // freqData = new Uint8Array(analyserNode.frequencyBinCount);
+    // analyserNode.getByteFrequencyData(freqData);
 
     analyserNode.getByteTimeDomainData(timeDomainData);
     for (var i=0; i<timeDomainData.length; ++i){
@@ -65,7 +63,7 @@ setInterval(function(){
 
 function play(){
 	navigator.webkitGetUserMedia({video:false, audio:true}, function(stream) {
-		var source = context.createMediaStreamSource(stream);
+		source = context.createMediaStreamSource(stream);
         source.connect(analyserNode);
     });
 }

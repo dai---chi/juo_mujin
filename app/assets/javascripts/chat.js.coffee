@@ -5,6 +5,7 @@ jQuery ->
 window.Chat = {}
 window.Topic = {}
 
+
 class Chat.User
   constructor: (@user_name) ->
   serialize: => { user_name: @user_name }
@@ -14,15 +15,25 @@ class Topic.User
 
 class Chat.Controller
   template: (message) ->
-    html =
-      """
-      <div class="message new_message" >
-        <label class="label label-info">
-          [#{message.received}] #{message.user_name}
-        </label>&nbsp;
-        #{message.msg_body}
-      </div>
-      """
+    console.log('aaa')
+    console.log(message)
+    html = '<div class="message new_message">'
+    for i in message.msg_body
+      html += '<span style="font-size:'
+      html += i.vol
+      html += 'px;">'
+      html += String.fromCharCode(i.keyCode)
+      html += '</span>'
+      # """<span>#{String.fromCharCode(message.msg_body[i].keyCode)}</span>"""
+      # """
+      # <div class="message new_message" >
+      #   <label class="label label-info">
+      #     [#{message.received}] #{message.user_name}
+      #   </label>&nbsp;
+      #   #{message.msg_body}
+      # </div>
+      # """
+    html += '</div>'
     $(html)
 
   userListTemplate: (userList) ->
@@ -58,7 +69,9 @@ class Chat.Controller
     return if !message
     # topic_id = parseInt($('#topic_id').val())
     topic_id = $('#topic_selection option:selected').val()
-    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: message, topic_id: topic_id}
+    console.log("messageArr: #{messageArr}")
+    console.log(messageArr)
+    @dispatcher.trigger 'new_message', {user_name: @user.user_name, msg_body: messageArr, topic_id: topic_id}
     $('#message_post').val('')
 
   updateUserList: (userList) =>
@@ -72,8 +85,9 @@ class Chat.Controller
   appendMessage: (message) ->
     messageTemplate = @template(message)
     # $('#topics').append messageTemplate
-    console.log("message.topic_id: "+message.topic_id)
-    console.log(message)
+    # console.log("message.topic_id: "+message.topic_id)
+    console.log("message: #{message}")
+    console.log("messageTemplate: #{messageTemplate}")
     # $('#'+message.topic_id).children('.messages').prepend(messageTemplate).fadeOut(100).fadeIn(200)
     # $(messageTemplate).prependTo($('#'+message.topic_id).children('.messages')).hide().fadeIn(600)
     $(messageTemplate).prependTo($('#posts')).hide().fadeIn(600)

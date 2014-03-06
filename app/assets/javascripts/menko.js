@@ -21,7 +21,7 @@ var pushedCharCode = "";
 //     }
 // });
 $(window).on('keydown', function(t) {
-    if (t.keyCode == 8){
+    if (t.keyCode == 8 && $( '#select1' ).is( ':checked' )){
         $('.char:last').remove();
         messageArr.pop()
         console.log(t);
@@ -34,10 +34,17 @@ $(window).on('keydown', function(t) {
         setTimeout("checkRecent()", 50); //要調整
     }
     console.log(e);
-});
+}).on('load', function() {
+    $('#user_name').on('blur', function(){
+        $( '#select1' ).prop("checked", true ) //attrでやると1回しか使えない https://gist.github.com/froop/5493920
+    }).on('focus', function(){
+        $( '#select1' ).prop("checked", false )
+    });
+})
 
 var maxVol;
 var messageArr = [];
+
 function checkRecent() {
     for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
         recentVolume.push(volumeArr.pop());
@@ -79,10 +86,13 @@ setInterval(function(){
     volumeArr.push(max);
 },0);
 
+
+
 function play(){
 	navigator.webkitGetUserMedia({video:false, audio:true}, function(stream) {
 		source = context.createMediaStreamSource(stream);
         source.connect(analyserNode);
     });
 }
+
 play();

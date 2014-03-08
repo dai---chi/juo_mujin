@@ -61,7 +61,14 @@ class Chat.Controller
     @dispatcher.bind 'user_list', @updateUserList
     $('input#user_name').on 'keyup', @updateUserInfo
     $('#send_post').on 'click', @sendMessage
+    $('#send_username').on 'click', @req
     $('#message_post').keypress (e) -> $('#send_post').click() if e.keyCode == 13
+
+  req: =>
+    require(['/assets/menko.js'])
+    $('.modal').eq(0).fadeOut();
+    $('#enableAPI').fadeIn();
+
 
   newMessage: (message) =>
     @messageQueue.push message

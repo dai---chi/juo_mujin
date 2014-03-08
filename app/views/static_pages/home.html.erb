@@ -12,6 +12,31 @@
   </div>
 </div>
  -->
+ <div class="modal" id="myModal">
+   <div class="modal-header">
+     <span class="close closeBtn" data-dismiss="modal">×</span>
+     <h3>Please enter name :)</h3>
+   </div>
+   <div class="modal-body">
+    <input type="text" class="input-medium" id="user_name" placeholder='user_name'>
+    <button id='send_username' class="btn btn-primary">Join</button>
+  </div>
+<!--   <div class="modal-footer">
+   <span class="btn closeBtn" >Close</span>
+ </div>
+ --></div>
+<div class="modal" id="enableAPI">
+<!--    <div class="modal-header">
+     <h3>Please enter name :)</h3>
+   </div> -->
+   <div class="modal-body">
+    <span class="char" style="font-size:47px; line-height: 47px;">P</span><span class="char" style="font-size:29px; line-height: 29px;">l</span><span class="char" style="font-size:25px; line-height: 25px;">e</span><span class="char" style="font-size:37px; line-height: 37px;">a</span><span class="char" style="font-size:33px; line-height: 33px;">s</span><span class="char" style="font-size:35px; line-height: 35px;">e</span><span class="char" style="font-size:23px; line-height: 23px;"> </span><span class="char" style="font-size:59px; line-height: 59px;"> </span><span class="char" style="font-size:41px; line-height: 41px;">E</span><span class="char" style="font-size:41px; line-height: 41px;">n</span><span class="char" style="font-size:23px; line-height: 23px;">a</span><span class="char" style="font-size:37px; line-height: 37px;">b</span><span class="char" style="font-size:29px; line-height: 29px;">l</span><span class="char" style="font-size:45px; line-height: 45px;">e</span><span class="char" style="font-size:27px; line-height: 27px;"> </span><span class="char" style="font-size:49px; line-height: 49px;">A</span><span class="char" style="font-size:39px; line-height: 39px;">P</span><span class="char" style="font-size:41px; line-height: 41px;">I</span>
+  </div>
+</div>
+<script>
+$('#enableAPI').hide()
+ </script>
+
 <br><br>
  <div class="menko_input_field">
   <input type="checkbox" id="select1" checked="checked" />
@@ -20,14 +45,6 @@
 </div>
 
 <div class="postWrapper">
-  <div class="form-inline well">
-    <fieldset>
-      <input type="text" class="input-medium" id="user_name" placeholder='user_name'>
-      <input type="text" class="input-xlarge" id="message_post" placeholder='本文'>
-      <%= select :topic, :selection , topic_list.map{|a| a[:topic].title} %>
-      <button id="send_post" class="btn btn-primary">Send</button>
-    </fieldset>
-  </div>
   <div id="posts" class="well" data-uri="<%= request.host %>:<%= request.port %>/websocket">
   </div>
   <div id="topics">

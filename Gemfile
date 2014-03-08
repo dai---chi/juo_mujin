@@ -11,6 +11,7 @@ gem 'websocket-rails', git: 'git://github.com/DanKnox/websocket-rails.git'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'sqlite3', '1.3.7'
+gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

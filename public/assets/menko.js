@@ -13,14 +13,6 @@ var volume = document.getElementById("volume");
 var sub = 0;
 
 var pushedCharCode = "";
-// $(window).keypress(function(e){
-//     pushedCharCode = e.keyCode;
-//     console.log(e);
-//     if( $( '#select1' ).is( ':checked' ) ){
-//         setTimeout("checkRecent()", 50); //要調整
-//         return false;
-//     }
-// });
 $(window).on('keydown', function(t) {
     if (t.keyCode == 8 && $( '#select1' ).is( ':checked' )){
         $('.char:last').remove();
@@ -48,12 +40,12 @@ var messageArr = [];
 var tmpArr = []
 
 function checkRecent() {
-    for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
-        tmpArr = volumeArr.pop()
-        recentVolume.push(tmpArr);
-        volumeArr.push(tmpArr);
-        volumeArr.shift();
+    // for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
+    for (var j = volumeArr.length-15; j < volumeArr.length; j++) {
+        recentVolume.push(volumeArr[j]);
+        // volumeArr.push(tmpArr);
     };
+    console.log('volumeArr: '+volumeArr.length)
     // console.log(recentVolume);
     maxVol = Math.max.apply(null,recentVolume) - 128;
     // console.log("maxVol: "+maxVol);
@@ -74,6 +66,7 @@ function checkRecent() {
     }
     // console.log('pushedCharCode: ' + pushedCharCode)
     recentVolume = [];
+
 }
 
 setInterval(function(){
@@ -89,6 +82,9 @@ setInterval(function(){
         }
     }
     volumeArr.push(max);
+    if(volumeArr.length > 1000){
+        volumeArr.splice(0,800)
+    }
 },0);
 
 

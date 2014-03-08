@@ -24,7 +24,7 @@ $(window).on('keydown', function(t) {
 }).on('keypress', function(e) {
     pushedCharCode = e.keyCode
     if( $( '#select1' ).is( ':checked' ) ){
-        setTimeout("checkRecent()", 50); //要調整
+        setTimeout("checkRecent()", 5); //要調整
     }
     // console.log(e);
 }).on('load', function() {

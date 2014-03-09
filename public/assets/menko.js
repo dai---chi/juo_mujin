@@ -46,7 +46,7 @@ var tmpArr = []
 
 function checkRecent() {
     // for (var j = volumeArr.length-40; j < volumeArr.length; j++) {
-    for (var j = volumeArr.length-15; j < volumeArr.length; j++) {
+    for (var l = volumeArr.length, j = l-15; j < l; j++) {
         recentVolume.push(volumeArr[j]);
         // volumeArr.push(tmpArr);
     };
@@ -82,7 +82,7 @@ setInterval(function(){
         analyserNode.getByteFrequencyData(freqData);
     }
     analyserNode.getByteTimeDomainData(timeDomainData);
-    for (var i=0; i<timeDomainData.length; ++i){
+    for (var i=0, l = timeDomainData.length; i<l; ++i){
         var d = timeDomainData[i];
         if(d > max) {
             max = d;
@@ -122,7 +122,7 @@ var sub = 0;
     // ctx.fillStyle = "#ccc";
     // ctx.fillStyle = "";
 
-    for(var i = 0; i < freqData.length; ++i) {
+    for(var i = 0,l = freqData.length ; i < l; ++i) {
         //上部の描画
         // ctx.fillRect( (freqData.length-i)*2, 0, 1, freqData[i]*2);
         //下部の描画

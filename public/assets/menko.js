@@ -122,11 +122,11 @@ var sub = 0;
     // ctx.fillStyle = "#ccc";
     // ctx.fillStyle = "";
 
-    for(var i = 0,l = freqData.length ; i < l; ++i) {
+    for(var i = 0,l = freqData.length / 3; i < l; ++i) {
         //上部の描画
         // ctx.fillRect( (freqData.length-i)*2, 0, 1, freqData[i]*2);
         //下部の描画
-        ctx.fillRect(i*2, h, 1, -freqData[i]*2);
+        ctx.fillRect(i*3, h, 1, -freqData[i]*2);
         // ctx.strokeRect(i*5, h, 5, -freqData[i]*2);
     }
     freqData = [];

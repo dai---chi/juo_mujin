@@ -9,6 +9,7 @@
 }
 .label-info {
 	display: inline !important;
+  background-color: #EEA627;
 }
 #chat {
 	height: 290px;
@@ -19,6 +20,10 @@
   .input-xlarge{
     width: 240px;
   }
+}
+
+#posts{
+  background: rgba(245, 245, 245, 0.43);
 }
 
 #topics {
@@ -53,6 +58,11 @@
 
   }
 
+}
+
+#fft_graph{
+  position: absolute;
+  z-index: -5;
 }
 
 #footer {

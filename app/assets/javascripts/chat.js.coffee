@@ -79,7 +79,6 @@ class Chat.Controller
     # event.preventDefault()
     # message = $('#message_post').val()
     message = messageArr
-    return if !message
     # topic_id = parseInt($('#topic_id').val())
     topic_id = $('#topic_selection option:selected').val()
     console.log("messageArr: #{messageArr}")
